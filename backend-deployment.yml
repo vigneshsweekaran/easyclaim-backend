@@ -24,16 +24,16 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-      volumeMounts:
+          volumeMounts:
+          - name: config-volume
+            mountPath: "/config"
+      volumes:
       - name: config-volume
-        mountPath: "/config"
-    volumes:
-    - name: config-volume
-      configMap:
-        name: eaycliam-backend-configmap
-        items:
-        - key: application.properties
-          path: application.properties
+        configMap:
+          name: eaycliam-backend-configmap
+          items:
+          - key: application.properties
+            path: application.properties
 
 ---
 apiVersion: v1
