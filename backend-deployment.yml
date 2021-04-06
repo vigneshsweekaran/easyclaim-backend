@@ -9,14 +9,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      name: easyclaim-backend-pod
+      name: easyclaim-backend
   strategy:
     type: Recreate
   template:
     metadata:
-      name: easyclaim-backend-pod
+      name: easyclaim-backend
       labels:
-        name: easyclaim-backend-pod
+        name: easyclaim-backend
     spec:
       containers:
         - name:  easyclaim-backend
@@ -39,15 +39,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: easyclaim-backend-service
+  name: easyclaim-backend
   namespace: easyclaim
   labels:
-    name: easyclaim-backend-service
+    name: easyclaim-backend
 spec:
   ports:
     - port: 8080
       targetPort: 8080
-      nodePort: 32002
   selector:
-    name: easyclaim-backend-pod
-  type: NodePort
+    name: easyclaim-backend
+  type: ClusterIp
