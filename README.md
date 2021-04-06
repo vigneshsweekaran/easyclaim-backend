@@ -15,7 +15,7 @@ mysql -u root -p test
 
 ### List database and use specific database
 ```
-show databses;
+show databases;
 ```
 
 ### Create database
