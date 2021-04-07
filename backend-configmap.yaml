@@ -1,8 +1,7 @@
 kind: ConfigMap 
 apiVersion: v1 
 metadata:
-  name: eaycliam-backend-configmap
-  namespace: easyclaim
+  name: easyclaim-backend
   labels:
     name: easyclaim-backend
 data:

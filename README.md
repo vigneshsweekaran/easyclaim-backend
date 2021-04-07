@@ -2,38 +2,23 @@
 Backend code for easycliam application
 The backend code is written in java
 
-# Database
-### Connect to a mysql pod
+# Deployment
+### Deploy mysql database
 ```
-kubectl exec -it pod_name -n easyclaim -- bash
-```
-
-### Login to mysql from inside a pod
-```
-mysql -u root -p test
+kubectl apply -f database-deployment.yaml
 ```
 
-### List database and use specific database
+### Deploy configmap and deployment for backend java application
 ```
-show databases;
-```
-
-### Create database
-```
-create database test;
+kubectl apply -f backend-configmap.yaml
+kubectl apply -f backend-deployment.yaml
 ```
 
-### Select a database
-``` 
-use test;
-```
-
-### List tables
-```
-show tables;
-```
-
-### Create new User using backend api
+# Create new User using backend api
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"username":"test","password":"test","firstName":"test","lastName":"test","age":23,"salary":12345}' http://10.5.0.7:8080/users
 ```
+Info:
+
+http://10.5.0.7 --> backend ClusterIP service IP-address
+8080 --> backend ClusterIP service port 
