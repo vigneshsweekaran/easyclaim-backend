@@ -21,4 +21,4 @@ curl -H "Content-Type: application/json" -X POST -d '{"username":"test","passwor
 Info:
 
 http://10.5.0.7 --> backend ClusterIP service IP-address
-8080 --> backend ClusterIP service port 
+8080 --> backend ClusterIP service port

@@ -5,7 +5,7 @@ metadata:
   labels:
     name: easyclaim-backend
 data:
-  application.properties: |-
+  application: |-
     spring.datasource.url=jdbc:mysql://mysql:3306/test
     spring.datasource.username=root
     spring.datasource.password=root
