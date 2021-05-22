@@ -14,8 +14,6 @@ spec:
   template:
     metadata:
       name: easyclaim-backend
-      labels:
-        name: easyclaim-backend
     spec:
       containers:
         - name:  easyclaim-backend
