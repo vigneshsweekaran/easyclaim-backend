@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: easyclaim-backend
+  labels:
+    name: easyclaim-backend
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 32010
+  selector:
+    name: easyclaim-backend
+  type: NodePort
