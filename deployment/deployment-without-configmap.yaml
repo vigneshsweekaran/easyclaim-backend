@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name:  easyclaim-backend
-          image: vigneshsweekaran/easyclaim-backend:latest
+          image: vigneshsweekaran/easyclaim-backend:latest-arm64
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
