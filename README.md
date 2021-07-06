@@ -18,7 +18,11 @@ kubectl apply -f backend-deployment.yaml
 ```
 curl -H "Content-Type: application/json" -X POST -d '{"username":"test","password":"test","firstName":"test","lastName":"test","age":23,"salary":12345}' http://10.5.0.7:8080/users
 ```
-Info:
 
+Info:
 http://10.5.0.7 --> backend ClusterIP service IP-address
+                    Worker node ip address, if the service type is NodePort
+                    External Ip address, if the service type is LoadBalancer
 8080 --> backend ClusterIP service port
+         Use Nodeport defined in service definition, if the service type is NodePort
+         Use 80 if the service type is LoadBalancer
