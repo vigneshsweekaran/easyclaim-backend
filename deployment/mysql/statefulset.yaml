@@ -64,9 +64,9 @@ spec:
       containers:
       - name: mysql
         image: mysql:5.7
-        env:
-        - name: MYSQL_ALLOW_EMPTY_PASSWORD
-          value: "1"
+        envFrom:
+        - secretRef:
+            name: mysql
         ports:
         - name: mysql
           containerPort: 3306
@@ -161,6 +161,8 @@ spec:
       name: data
     spec:
       accessModes: ["ReadWriteOnce"]
+      storageClassName: "standard"
       resources:
         requests:
           storage: 1Gi
+
