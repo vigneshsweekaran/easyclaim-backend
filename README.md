@@ -2,12 +2,15 @@
 Backend code for easycliam application. The backend code is written in java springboot (Java 8)
 
 ## Deployment
-### Deploy mysql database
+### Deploy mysql database as deployment in Kubernetes
 ```
-kubectl apply -f deployment/mysql/deployment.yaml
+kubectl apply -f deployment/mysql/deployment/configmap.yaml
+kubectl apply -f deployment/mysql/deployment/secret.yaml
+kubectl apply -f deployment/mysql/deployment/deployment.yaml
+kubectl apply -f deployment/mysql/deployment/service.yaml
 ```
 
-### Deploy configmap and deployment for backend java application
+### Deploy easyclaim backend java application as deployment in kubernetes
 ```
 kubectl apply -f deployment/configmap.yaml
 kubectl apply -f deployment/deployment.yaml
