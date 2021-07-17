@@ -6,17 +6,17 @@ pipeline {
         maven 'maven-3.6.3' 
     }
     parameters {
-        booleanParam(name: 'maven-build', defaultValue: true, description: 'Enable/Disable maven Build')
-        booleanParam(name: 'artifactory-build-publish', defaultValue: false, description: 'Enable/Disable Artifactory maven build and publish ')
+        booleanParam(name: 'maven_build', defaultValue: true, description: 'Enable/Disable maven Build')
+        booleanParam(name: 'artifactory_build_publish', defaultValue: false, description: 'Enable/Disable Artifactory maven build and publish ')
         booleanParam(name: 'sonarqube', defaultValue: false, description: 'Enable/Disable Sonarqube Analysis')
-        booleanParam(name: 'docker-build-push', defaultValue: true, description: 'Enable/Disable Docker build and push')
+        booleanParam(name: 'docker_build_push', defaultValue: true, description: 'Enable/Disable Docker build and push')
         booleanParam(name: 'deploy', defaultValue: false, description: 'Enable/Disable Deploy')
     }
     stages {
         stage ('Maven Build') {
             when {
                 expression {
-                    return params.maven-build
+                    return params.maven_build
                 }
             }
             steps {
@@ -26,7 +26,7 @@ pipeline {
         stage ('Artifactory configuration') {
             when {
                 expression {
-                    return params.artifactory-build-publish
+                    return params.artifactory_build_publish
                 }
             }
             steps {
@@ -48,7 +48,7 @@ pipeline {
         stage ('Exec Maven') {
             when {
                 expression {
-                    return params.artifactory-build-publish
+                    return params.artifactory_build_publish
                 }
             }
             steps {
@@ -64,7 +64,7 @@ pipeline {
         stage ('Publish build info') {
             when {
                 expression {
-                    return params.artifactory-build-publish
+                    return params.artifactory_build_publish
                 }
             }
             steps {
@@ -91,7 +91,7 @@ pipeline {
         stage('Docker Build and Push') {
             when {
                 expression {
-                    return params.docker-build-push
+                    return params.docker_build_push
                 }
             }
             steps {
