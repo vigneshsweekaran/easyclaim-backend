@@ -8,13 +8,13 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @Column
     private String firstName;
     @Column
     private String lastName;
+    @Id
     @Column
     private String username;
     @Column
