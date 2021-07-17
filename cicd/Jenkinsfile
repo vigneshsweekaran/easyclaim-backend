@@ -16,7 +16,7 @@ pipeline {
         stage ('Maven Build') {
             when {
                 expression {
-                    params.maven-build.toBoolean() == true
+                    return params.maven-build
                 }
             }
             steps {
@@ -26,7 +26,7 @@ pipeline {
         stage ('Artifactory configuration') {
             when {
                 expression {
-                    params.artifactory-build-publish.toBoolean() == true
+                    return params.artifactory-build-publish
                 }
             }
             steps {
@@ -48,7 +48,7 @@ pipeline {
         stage ('Exec Maven') {
             when {
                 expression {
-                    params.artifactory-build-publish.toBoolean() == true
+                    return params.artifactory-build-publish
                 }
             }
             steps {
@@ -64,7 +64,7 @@ pipeline {
         stage ('Publish build info') {
             when {
                 expression {
-                    params.artifactory-build-publish.toBoolean() == true
+                    return params.artifactory-build-publish
                 }
             }
             steps {
@@ -76,7 +76,7 @@ pipeline {
         stage('SonarQube analysis') {
             when {
                 expression {
-                    params.sonarqube.toBoolean() == true
+                    return params.sonarqube
                 }
             }
             environment {
@@ -91,7 +91,7 @@ pipeline {
         stage('Docker Build and Push') {
             when {
                 expression {
-                    params.docker-build-push.toBoolean() == true
+                    return params.docker-build-push
                 }
             }
             steps {
@@ -108,7 +108,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             when {
                 expression {
-                    params.deploy.toBoolean() == true
+                    return params.deploy
                 }
             }
             steps{
