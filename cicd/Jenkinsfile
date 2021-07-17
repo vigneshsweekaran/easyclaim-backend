@@ -16,7 +16,7 @@ pipeline {
         stage ('Maven Build') {
             when {
                 expression {
-                    env.maven-build.toBoolean() == true
+                    params.maven-build.toBoolean() == true
                 }
             }
             steps {
@@ -26,7 +26,7 @@ pipeline {
         stage ('Artifactory configuration') {
             when {
                 expression {
-                    env.artifactory-build-publish.toBoolean() == true
+                    params.artifactory-build-publish.toBoolean() == true
                 }
             }
             steps {
@@ -48,7 +48,7 @@ pipeline {
         stage ('Exec Maven') {
             when {
                 expression {
-                    env.artifactory-build-publish.toBoolean() == true
+                    params.artifactory-build-publish.toBoolean() == true
                 }
             }
             steps {
@@ -64,7 +64,7 @@ pipeline {
         stage ('Publish build info') {
             when {
                 expression {
-                    env.artifactory-build-publish.toBoolean() == true
+                    params.artifactory-build-publish.toBoolean() == true
                 }
             }
             steps {
