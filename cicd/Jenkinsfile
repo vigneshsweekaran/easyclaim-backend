@@ -3,7 +3,8 @@ def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', '
 pipeline {
     agent { label 'master'}
     tools {
-        maven 'maven-3.6.3' 
+        maven 'maven-3.6.3'
+        jdk 'openjdk-8'
     }
     parameters {
         booleanParam(name: 'maven_build', defaultValue: true, description: 'Enable/Disable maven Build')
